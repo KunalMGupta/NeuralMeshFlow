@@ -1,6 +1,10 @@
 # Neural Mesh Flow: 3D Manifold Mesh Generation via Diffeomorphic Flows
 
-This repository contains a Pytorch implementation of the paper:
+### [Project](https://kunalmgupta.github.io/projects/NeuralMeshflow.html) | [Paper](https://arxiv.org/abs/2007.10973)
+
+[![Open Tiny-NeRF in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/13qu74xDsHCgQLsHfjACJ5DGF9JkOJYYu#scrollTo=Yji6M3P-a6XI)
+
+This repository contains the official Pytorch implementation of the paper:
 
 [Neural Mesh Flow: 3D Manifold Mesh Generation via Diffeomorphic Flows](https://arxiv.org/abs/2007.10973).
 
@@ -17,7 +21,4 @@ Meshes are important representations of physical 3D entities in the virtual worl
 
 ![Teaser](git_assets/all.gif)
 
-### [Project](https://kunalmgupta.github.io/projects/NeuralMeshflow.html) | [Paper](https://arxiv.org/abs/2007.10973)
-
-[![Open Tiny-NeRF in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/13qu74xDsHCgQLsHfjACJ5DGF9JkOJYYu#scrollTo=Yji6M3P-a6XI)
 
