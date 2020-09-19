@@ -31,4 +31,5 @@ The entire code is [containerized](https://www.docker.com/resources/what-contain
 
 
 
-## NOTE: This repo is under construction. Thanks for your intersts, please check again in a few days or mail me your queries!
+## NOTE: This repo is under construction. 
+Thanks for your interest, please check again in a few days or mail me your queries!
