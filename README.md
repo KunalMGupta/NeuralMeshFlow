@@ -27,4 +27,8 @@ We provide code and data that let's you play with NMF and do single view mesh re
 
 ## Setting up NMF on your machine
 
-The entire code is [containerized](https://www.docker.com/resources/what-container). This makes setting up NMF is swift and easy. Make sure you have nvidia-docker and Docker CE [installed](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker) on your machine before going further. 
+The entire code is [containerized](https://www.docker.com/resources/what-container). This makes setting up NMF swift and easy. Make sure you have nvidia-docker and Docker CE [installed](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker) on your machine before going further. 
+
+
+
+## NOTE: This repo is under construction. Thanks for your intersts, please check again in a few days or mail me your queries!
