@@ -24,8 +24,8 @@ def worker(BATCH, METHOD, NUM, cat, START, END, PRED_PATH, GDTH_PATH, OUTFILENAM
 if __name__ == '__main__':
     
     parser = argparse.ArgumentParser()
-    parser.add_argument("--method", type=str, help = "method")
-    parser.add_argument("--type", type=str, help = "Type: Images (SVR) or Point (AE)")
+    parser.add_argument("--method", type=str, help = "method to be evaluated")
+    parser.add_argument("--type", type=str, help = "Type: Images (SVR) or Points (AE)")
     parser.add_argument("--batch_size", default=10, type=int, help = "batch size used for evaluation")
     parser.add_argument("--num_workers",default=13, type=int, help = "number of threads to launch")
     
