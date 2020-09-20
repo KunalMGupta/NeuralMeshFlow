@@ -31,8 +31,8 @@ The entire code is [containerized](https://www.docker.com/resources/what-contain
 
 You can either use our prebuild images or build your own from provided dockerfiles! We use two separate images for training and evaluation. 
 
-> For training use the image kunalg106/neuralmeshflow or build from dockerfile located under '''dockerfiles/nmf/''' 
-> For evaluation use the image kunalg106/neuralmeshflow_eval or build from dockerfile located under '''dockerfiles/evaluation/'''
+1. For training use the image kunalg106/neuralmeshflow or build from dockerfile located under dockerfiles/nmf/
+2. For evaluation use the image kunalg106/neuralmeshflow_eval or build from dockerfile located under dockerfiles/evaluation/
 
 
 
