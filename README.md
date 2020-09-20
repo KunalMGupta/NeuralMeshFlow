@@ -11,7 +11,7 @@ This repository contains official Pytorch implementation of the paper:
 [Kunal Gupta<sup>1</sup> ](http://kunalmgupta.github.io/),
 [Manmohan Chandraker](http://cseweb.ucsd.edu/~mkchandraker/)
 
-<sup>1</sup> k5gupta@ucsd.edu
+<sup>1</sup> k5gupta@ucsd.ediu
 
 UC San Diego
 
@@ -40,7 +40,7 @@ If you prefer to use virtual environments and not dockers, please install packag
 
 ## Download the dataset
 
-1. Download our processed ShapeNet dataset from [here]()
+1. Download our processed ShapeNet dataset from [here](http://cseweb.ucsd.edu/~viscomp/projects/NeurIPS20NMF/generated_meshes/ShapeNetPoints.zip)
 2. Download the Shapenet Rendering dataset from [here](http://cvgl.stanford.edu/data2/ShapeNetRendering.tgz)
 
 Extract these into the directory ./data/ . Alternatively, extract them in the location of your choice but specify the respective directories with flag '--points_path' for ShapeNet points dataset and '--img_path' for ShapeNet renderings dataset when doing training and evaluation.
@@ -112,7 +112,7 @@ If you wish to avoid comet_ml visualizations, simply omit --comet flags. This sh
 
 We provide predicted meshes for our pretrained NMF [here](). Addionally, the predictions for ablation (Fig 5 table) are provided [here](http://cseweb.ucsd.edu/~viscomp/projects/NeurIPS20NMF/generated_meshes/ablation.zip). 
 
-To enable further benchmarking, we provide predicted meshes for the baseline methods: [MeshRCNN](http://cseweb.ucsd.edu/~viscomp/projects/NeurIPS20NMF/generated_meshes/meshrcnn_data_new.zip)(76GB), [pixel2Mesh](http://cseweb.ucsd.edu/~viscomp/projects/NeurIPS20NMF/generated_meshes/pixel2mesh_data_new.zip)(79GB), [OccNet](http://cseweb.ucsd.edu/~viscomp/projects/NeurIPS20NMF/generated_meshes/occnet.zip)(3.2GB), [AtlasNet-Sph](http://cseweb.ucsd.edu/~viscomp/projects/NeurIPS20NMF/generated_meshes/new_atlasnet.zip)(14GB) and [AtlasNet-25](http://cseweb.ucsd.edu/~viscomp/projects/NeurIPS20NMF/generated_meshes/new_atlasnet-25.zip)(12GB). Please consider citing these works if you happen to use these mesh models along with our paper. 
+To enable further benchmarking, we provide predicted meshes for the baseline methods: [MeshRCNN](http://cseweb.ucsd.edu/~viscomp/projects/NeurIPS20NMF/generated_meshes/meshrcnn.zip)(76GB), [pixel2Mesh](http://cseweb.ucsd.edu/~viscomp/projects/NeurIPS20NMF/generated_meshes/pixel2mesh.zip)(79GB), [OccNet](http://cseweb.ucsd.edu/~viscomp/projects/NeurIPS20NMF/generated_meshes/occnet.zip)(3.2GB), [AtlasNet-Sph](http://cseweb.ucsd.edu/~viscomp/projects/NeurIPS20NMF/generated_meshes/atlasnet.zip)(14GB) and [AtlasNet-25](http://cseweb.ucsd.edu/~viscomp/projects/NeurIPS20NMF/generated_meshes/atlasnet-25.zip)(12GB). Please consider citing these works if you happen to use these mesh models along with our paper. 
 
 In case you wish to generate meshes for your trained NMF, execute the following:
 
