@@ -15,10 +15,10 @@ def get_configs(METHOD, TYPE):
     '''
     
     # Ground Truth
-    GDTH_PATH = '/kunal-data/NMF_points/'            # Path to ground truth points dataset (we evaluate against this)
+    GDTH_PATH = './data/ShapeNetPoints/'            # Path to ground truth points dataset (we evaluate against this)
     # Note: for Pixel2Mesh and MeshRCNN, ground truth meshes are stored with respective predicted meshes
     
-    DIR = '/kunal-data2'        # Directory where predicted meshes are stored
+    DIR = './'        # Directory where predicted meshes are stored
     
     # AtlasNet-25
     AT25_PRED_PATH_IMAGES = '{}/new_atlasnet-25/svr/'.format(DIR)   # SVR meshes are stored here

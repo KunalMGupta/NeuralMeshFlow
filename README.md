@@ -42,7 +42,7 @@ If you prefer to use virtual environments and not dockers, please install packag
 
 Download the ShapeNet [rendering](http://cvgl.stanford.edu/data2/ShapeNetRendering.tgz) dataset and our pre-processed ShapeNet [points](http://cseweb.ucsd.edu/~viscomp/projects/NeurIPS20NMF/generated_meshes/ShapeNetPoints.zip)(73GB) dataset. 
 
-Extract these into the directory ```./data/``` . Alternatively, extract them in the location of your choice but specify the respective directories with flag ```--points_path``` for ShapeNet points dataset and ```--img_path``` for ShapeNet renderings dataset when doing training and evaluation.
+Extract these into the directory ```./data/``` . Alternatively, extract them in a location of your choice but specify the respective directories with flag ```--points_path``` for ShapeNet points dataset and ```--img_path``` for ShapeNet renderings dataset when doing training and evaluation.
  
 You should see the following directory structures:
 
@@ -109,7 +109,7 @@ If you wish to avoid comet_ml visualizations, simply omit ```--comet``` flags. T
 
 ## Generate meshes from trained NMF and baseline methods
 
-We provide predicted meshes for our pretrained NMF [here](). Addionally, the predictions for ablation (Fig 5 table) are provided [here](http://cseweb.ucsd.edu/~viscomp/projects/NeurIPS20NMF/generated_meshes/ablation.zip). 
+We provide predicted meshes for our pretrained NMF [here](http://cseweb.ucsd.edu/~viscomp/projects/NeurIPS20NMF/generated_meshes/nmf.zip). Addionally, the predictions for ablation (Fig 5 table) are provided [here](http://cseweb.ucsd.edu/~viscomp/projects/NeurIPS20NMF/generated_meshes/ablation.zip). 
 
 To enable further benchmarking, we provide predicted meshes for the baseline methods: [MeshRCNN](http://cseweb.ucsd.edu/~viscomp/projects/NeurIPS20NMF/generated_meshes/meshrcnn.zip)(76GB), [pixel2Mesh](http://cseweb.ucsd.edu/~viscomp/projects/NeurIPS20NMF/generated_meshes/pixel2mesh.zip)(79GB), [OccNet](http://cseweb.ucsd.edu/~viscomp/projects/NeurIPS20NMF/generated_meshes/occnet.zip)(3.2GB), [AtlasNet-Sph](http://cseweb.ucsd.edu/~viscomp/projects/NeurIPS20NMF/generated_meshes/atlasnet.zip)(14GB) and [AtlasNet-25](http://cseweb.ucsd.edu/~viscomp/projects/NeurIPS20NMF/generated_meshes/atlasnet-25.zip)(12GB). Please consider citing these works if you happen to use these mesh models along with our paper. 
 
