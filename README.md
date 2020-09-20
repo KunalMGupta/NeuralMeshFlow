@@ -31,19 +31,37 @@ The entire code is [containerized](https://www.docker.com/resources/what-contain
 
 You can either use our prebuild images or build your own from provided dockerfiles! We use two separate images for training and evaluation. 
 
-1. For training use the image kunalg106/neuralmeshflow or build from dockerfile located under dockerfiles/nmf/
-2. For evaluation use the image kunalg106/neuralmeshflow_eval or build from dockerfile located under dockerfiles/evaluation/
+1. For training use the image kunalg106/neuralmeshflow or build yours from dockerfiles/nmf/Dockerfile
+2. For evaluation use the image kunalg106/neuralmeshflow_eval or build yours dockerfiles/evaluation/Dockerfile
 
-Note: If you prefer to use virtual environments and not dockers, please install packages inside your environment based on the list provided in respective dockerfiles.  
+If you prefer to use virtual environments and not dockers, please install packages inside your environment based on the list provided in respective dockerfiles.  
 
 ## Download the dataset
 
 1. Download our processed ShapeNet dataset from [here]()
 2. Download the Shapenet Rendering dataset from [here](http://cvgl.stanford.edu/data2/ShapeNetRendering.tgz)
 
-Extract these into the directory ./data/ . Alternatively, extract them in the location of your choice but specify the respective directories with flags '--points_path' for ShapeNet points dataset and '--img_path' for ShapeNet renderings dataset while training and evaluaiton. 
+Extract these into the directory ./data/ . Alternatively, extract them in the location of your choice but specify the respective directories with flag '--points_path' for ShapeNet points dataset and '--img_path' for ShapeNet renderings dataset when doing training and evaluaiton. 
 
+You should see the following directory structures:
 
+1. For ShapeNet points dataset
+
+```
+-- ./data/
+   -- ShapeNetPoints/
+      -- category_1/
+                    object1.npy
+		    object2.npy
+	         	.
+         		.
+	        	.
+      -- category_2/
+		.
+		.
+		.   
+				
+```
 ## Visualizing NMF training
 
 In order to visualize the training procedure and get real time plots, etc we make use of [comet.ml](https://www.comet.ml/site/) service which makes this process very seamless. To use their service, simply sign up for a free account and acquire your unique workspace name and API. This let's our code send training metrics directly to your account where you can visualize them. 
@@ -56,7 +74,7 @@ Once you have successfully launched your training environment/container, and acq
 python train.py --train AE --points_path /path/to/points/dataset/ --comet_API xxxYOURxxxAPIxxx --comet_workspace xxxYOURxxxWORKSPACExxx 
 ```
 
-If you don't want to use visualization from comet_ml, simply execute the following, You will see the stdout of training metrics
+If you don't want to use visualization from comet_ml, simply execute the following, you will see the stdout of training metrics
 
 ```
 python train.py --train AE --points_path /path/to/points/dataset/
@@ -69,7 +87,7 @@ For training the light weight image to point cloud regressor, execute the follow
 ```
 python train --train SVR --points_path /path/to/points/dataset/ --img_path /path/to/img/dataset/ --comet_API xxxYOURxxxAPIxxx --comet_workspace xxxYOURxxxWORKSPACExxx
 ```
-If wish to avoid comet_ml visualizations, simply omit --comet flags. This should take roughly 24 hrs to train when using 1 NVIDIA 2080Ti GPU with 60GB ram and 20 CPU cores.
+If you wish to avoid comet_ml visualizations, simply omit --comet flags. This should take roughly 24 hrs to train when using 1 NVIDIA 2080Ti GPU with 60GB ram and 20 CPU cores.
 
 ## NOTE: This repo is under construction. 
 Thanks for your interest, please check again in a few days or mail [me](mailto:k5gupta@ucsd.edu) your queries!
