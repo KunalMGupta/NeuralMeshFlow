@@ -33,17 +33,16 @@ The entire code is [containerized](https://www.docker.com/resources/what-contain
 
 You can either use our prebuild images or build your own from provided dockerfiles! We use two separate images for training and evaluation. 
 
-1. For training use the image kunalg106/neuralmeshflow or build from dockerfiles/nmf/Dockerfile
-2. For evaluation use the image kunalg106/neuralmeshflow_eval or build from dockerfiles/evaluation/Dockerfile
+1. For training use the image ```kunalg106/neuralmeshflow``` or build from ```dockerfiles/nmf/Dockerfile```
+2. For evaluation use the image ```kunalg106/neuralmeshflow_eval``` or build from ```dockerfiles/evaluation/Dockerfile```
 
 If you prefer to use virtual environments and not dockers, please install packages inside your environment based on the list provided in respective dockerfiles.  
 
 ## Download the dataset
 
-1. Download our processed ShapeNet dataset from [here](http://cseweb.ucsd.edu/~viscomp/projects/NeurIPS20NMF/generated_meshes/ShapeNetPoints.zip)
-2. Download the Shapenet Rendering dataset from [here](http://cvgl.stanford.edu/data2/ShapeNetRendering.tgz)
+Download the ShapeNet [rendering](http://cvgl.stanford.edu/data2/ShapeNetRendering.tgz) dataset and our pre-processed ShapeNet [points](http://cseweb.ucsd.edu/~viscomp/projects/NeurIPS20NMF/generated_meshes/ShapeNetPoints.zip)(73GB) dataset. 
 
-Extract these into the directory ./data/ . Alternatively, extract them in the location of your choice but specify the respective directories with flag '--points_path' for ShapeNet points dataset and '--img_path' for ShapeNet renderings dataset when doing training and evaluation.
+Extract these into the directory ```./data/``` . Alternatively, extract them in the location of your choice but specify the respective directories with flag ```--points_path``` for ShapeNet points dataset and ```--img_path``` for ShapeNet renderings dataset when doing training and evaluation.
  
 You should see the following directory structures:
 
@@ -106,7 +105,7 @@ For training the light weight image to point cloud regressor, execute the follow
 ```
 python train --train SVR --points_path /path/to/points/dataset/ --img_path /path/to/img/dataset/ --comet_API xxxYOURxxxAPIxxx --comet_workspace xxxYOURxxxWORKSPACExxx
 ```
-If you wish to avoid comet_ml visualizations, simply omit --comet flags. This should take roughly 24 hrs to train when using 1 NVIDIA 2080Ti GPU with 60GB ram and 20 CPU cores.
+If you wish to avoid comet_ml visualizations, simply omit ```--comet``` flags. This should take roughly 24 hrs to train when using 1 NVIDIA 2080Ti GPU with 60GB ram and 20 CPU cores.
 
 ## Generate meshes from trained NMF and baseline methods
 
