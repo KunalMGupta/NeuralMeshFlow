@@ -44,28 +44,32 @@ Note: If you prefer to use virtual environments and not dockers, please install 
 Extract these into the directory ./data/ . Alternatively, extract them in the location of your choice but specify the respective directories with flags '--points_path' for ShapeNet points dataset and '--img_path' for ShapeNet renderings dataset while training and evaluaiton. 
 
 
-# How to train NMF
+## Visualizing NMF training
 
-In order to visualize the training procedure and get real time plots, etc we make use of [comet.ml](https://www.comet.ml/site/) service which makes this process very seamless. To use their service, simply sign up for a free account and acquire your unique workspace name and API. This let's our code to send training metrics directly to your account. 
+In order to visualize the training procedure and get real time plots, etc we make use of [comet.ml](https://www.comet.ml/site/) service which makes this process very seamless. To use their service, simply sign up for a free account and acquire your unique workspace name and API. This let's our code send training metrics directly to your account where you can visualize them. 
 
-Once you have successfully launched your training environment/container, and acquired comet_ml workspace and API,  execute the following to first train the auto-encoder. 
+## How to train your NMF 
+
+Once you have successfully launched your training environment/container, and acquired comet_ml workspace and API,  execute the following to first train the auto-encoder.. 
 
 ```
 python train.py --train AE --points_path /path/to/points/dataset/ --comet_API xxxYOURxxxAPIxxx --comet_workspace xxxYOURxxxWORKSPACExxx 
-
 ```
 
-The above training was done on 5 NVIDIA 2080Ti GPUs with 120 GB ram and 70 CPU cores. It took roughly 24 hrs to train fully. 
+If you don't want to use visualization from comet_ml, simply execute the following, You will see the stdout of training metrics
 
-Note that if in the absence of comet_ml, you will simply see std out on your terminal. 
+```
+python train.py --train AE --points_path /path/to/points/dataset/
+```
+
+This should take roughly 24 hrs to train when using 5 NVIDIA 2080Ti GPUs with 120 GB ram and 70 CPU cores.
 
 For training the light weight image to point cloud regressor, execute the following.
 
 ```
 python train --train SVR --points_path /path/to/points/dataset/ --img_path /path/to/img/dataset/ --comet_API xxxYOURxxxAPIxxx --comet_workspace xxxYOURxxxWORKSPACExxx
 ```
-
-The aboce training was done on 1 NVIDIA 2080Ti GPU with 60GB ram and 20 CPU cores. It took roughly 24 hrs to train. 
+If wish to avoid comet_ml visualizations, simply omit --comet flags. This should take roughly 24 hrs to train when using 1 NVIDIA 2080Ti GPU with 60GB ram and 20 CPU cores.
 
 ## NOTE: This repo is under construction. 
-Thanks for your interest, please check again in a few days or mail me your queries!
+Thanks for your interest, please check again in a few days or mail [me](mailto:k5gupta@ucsd.edu) your queries!
