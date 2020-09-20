@@ -50,22 +50,20 @@ In order to visualize the training procedure and get real time plots, etc we mak
 
 Once you have successfully launched your training environment/container, and acquired comet_ml workspace and API,  execute the following to first train the auto-encoder. 
 
-'''
-
+```
 python train.py --train AE --points_path /path/to/points/dataset/ --comet_API xxxYOURxxxAPIxxx --comet_workspace xxxYOURxxxWORKSPACExxx 
 
-'''
+```
+
 The above training was done on 5 NVIDIA 2080Ti GPUs with 120 GB ram and 70 CPU cores. It took roughly 24 hrs to train fully. 
 
 Note that if in the absence of comet_ml, you will simply see std out on your terminal. 
 
 For training the light weight image to point cloud regressor, execute the following.
 
-'''
-
+```
 python train --train SVR --points_path /path/to/points/dataset/ --img_path /path/to/img/dataset/ --comet_API xxxYOURxxxAPIxxx --comet_workspace xxxYOURxxxWORKSPACExxx
-
-'''
+```
 
 The aboce training was done on 1 NVIDIA 2080Ti GPU with 60GB ram and 20 CPU cores. It took roughly 24 hrs to train. 
 
