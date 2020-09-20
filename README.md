@@ -29,6 +29,12 @@ We provide code and data that let's you play with NMF and do single view mesh re
 
 The entire code is [containerized](https://www.docker.com/resources/what-container). This makes setting up NMF swift and easy. Make sure you have nvidia-docker and Docker CE [installed](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker) on your machine before going further. 
 
+You can either use our prebuild images or build your own from provided dockerfiles! We use two separate images for training and evaluation. 
+
+1. For training use the image kunalg106/neuralmeshflow or build from dockerfile located under '''dockerfiles/nmf/''' 
+2. For evaluation use the image kunalg106/neuralmeshflow_eval or build from dockerfile located under '''dockerfiles/evaluation/'''
+
+
 
 
 ## NOTE: This repo is under construction. 
