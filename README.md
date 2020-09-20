@@ -51,17 +51,34 @@ You should see the following directory structures:
 -- ./data/
    -- ShapeNetPoints/
       -- category_1/
-                    object1.npy
-		    object2.npy
-	         	.
-         		.
-	        	.
+                    object1/   points.npy, normals.npy
+		    object2/   points.npy, normals.npy
+	         	.           .           .
+         		.           .           .  
+	        	.           .           . 
       -- category_2/
 		.
 		.
 		.   
 				
 ```
+
+2. For ShapeNet redering dataset
+
+```
+-- ./data/
+   -- ShapeNetRendering/
+      -- category_1/
+		    object1/renderings/     00.png, 01.png, ... 23.png
+			   .			 	.
+			   .                            .
+			   .                            . 
+      --category_2/
+		.
+		.
+		.
+```
+
 ## Visualizing NMF training
 
 In order to visualize the training procedure and get real time plots, etc we make use of [comet.ml](https://www.comet.ml/site/) service which makes this process very seamless. To use their service, simply sign up for a free account and acquire your unique workspace name and API. This let's our code send training metrics directly to your account where you can visualize them. 
@@ -88,6 +105,25 @@ For training the light weight image to point cloud regressor, execute the follow
 python train --train SVR --points_path /path/to/points/dataset/ --img_path /path/to/img/dataset/ --comet_API xxxYOURxxxAPIxxx --comet_workspace xxxYOURxxxWORKSPACExxx
 ```
 If you wish to avoid comet_ml visualizations, simply omit --comet flags. This should take roughly 24 hrs to train when using 1 NVIDIA 2080Ti GPU with 60GB ram and 20 CPU cores.
+
+## Generate meshes from trained NMF and baseline methods
+
+We provide predicted meshes for our pretrained NMF [here](). Addionally, the predictions for ablation (Fig 5 table) are provided [here](http://cseweb.ucsd.edu/~viscomp/projects/NeurIPS20NMF/generated_meshes/ablation.zip). 
+
+To enable further benchmarking, we provide predicted meshes for the baseline methods: [MeshRCNN](http://cseweb.ucsd.edu/~viscomp/projects/NeurIPS20NMF/generated_meshes/meshrcnn_data_new.zip)(76GB), [pixel2Mesh](http://cseweb.ucsd.edu/~viscomp/projects/NeurIPS20NMF/generated_meshes/pixel2mesh_data_new.zip)(79GB), [OccNet](http://cseweb.ucsd.edu/~viscomp/projects/NeurIPS20NMF/generated_meshes/occnet.zip)(3.2GB), [AtlasNet-Sph](http://cseweb.ucsd.edu/~viscomp/projects/NeurIPS20NMF/generated_meshes/new_atlasnet.zip) and [AtlasNet-25](http://cseweb.ucsd.edu/~viscomp/projects/NeurIPS20NMF/generated_meshes/new_atlasnet-25.zip). Please consider citing these works if you happen to use these mesh models along with our paper.
+
+In case you wish to generate meshes for your trained NMF, execute the following:
+
+```
+python3 generate.py --generate AE --batch_size 10 --num_workers 13 --generate_ae /path/to/where/meshes/are/stored/
+``` 
+
+Or for SVR meshes: 
+```
+python3 generate.py --generate SVR --batch_size 10 --num_workers 13 --generate_svr /path/to/where/meshes/are/stored/
+```
+
+## Evaluation
 
 ## NOTE: This repo is under construction. 
 Thanks for your interest, please check again in a few days or mail [me](mailto:k5gupta@ucsd.edu) your queries!
