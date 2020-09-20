@@ -8,8 +8,10 @@ This repository contains official Pytorch implementation of the paper:
 
 [Neural Mesh Flow: 3D Manifold Mesh Generation via Diffeomorphic Flows](https://arxiv.org/abs/2007.10973).
 
-[Kunal Gupta](http://kunalmgupta.github.io/),
+[Kunal Gupta<sup>1</sup> ](http://kunalmgupta.github.io/),
 [Manmohan Chandraker](http://cseweb.ucsd.edu/~mkchandraker/)
+
+<sup>1</sup> k5gupta@ucsd.edu
 
 UC San Diego
 
@@ -125,14 +127,14 @@ python3 generate.py --generate SVR --batch_size 10 --num_workers 13 --generate_s
 
 ## Evaluation
 
-First launch the evaluation container and do
+First launch the evaluation container and setup the torch-mesh-isect package which is used for calculating mesh intersections. 
 
 ```
 cd torch-mesh-isect
 python setup.py install
 ```
 
-Then modify the paths for predicted meshes in the config file located at ``` evaluation/config.py ```. Make sure that ```GDTH_PATH``` is set to the path where ShapeNet points dataset is stored. For evaluating other baselines, download their predicted meshes and extract them at ``` ./ ``` otherwise modify ``` xxx_PRED_PATH_IMAGES ``` and ```yyy_PRED_PATH_POINTS ``` to point where they are located.  
+Then modify the path for predicted meshes in the config file located at ``` evaluation/config.py ```. Make sure that ```GDTH_PATH``` is set to the path where ShapeNet points dataset is stored. For evaluating other baselines, download their predicted meshes and extract them at ``` ./ ``` otherwise modify ``` xxx_PRED_PATH_IMAGES ``` and ```yyy_PRED_PATH_POINTS ``` to point where they are located.  
 
 To evaluate a method execute the following:
 
