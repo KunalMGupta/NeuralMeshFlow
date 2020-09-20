@@ -31,8 +31,8 @@ The entire code is [containerized](https://www.docker.com/resources/what-contain
 
 You can either use our prebuild images or build your own from provided dockerfiles! We use two separate images for training and evaluation. 
 
-1. For training use the image kunalg106/neuralmeshflow or build yours from dockerfiles/nmf/Dockerfile
-2. For evaluation use the image kunalg106/neuralmeshflow_eval or build yours dockerfiles/evaluation/Dockerfile
+1. For training use the image kunalg106/neuralmeshflow or build from dockerfiles/nmf/Dockerfile
+2. For evaluation use the image kunalg106/neuralmeshflow_eval or build from dockerfiles/evaluation/Dockerfile
 
 If you prefer to use virtual environments and not dockers, please install packages inside your environment based on the list provided in respective dockerfiles.  
 
@@ -41,8 +41,8 @@ If you prefer to use virtual environments and not dockers, please install packag
 1. Download our processed ShapeNet dataset from [here]()
 2. Download the Shapenet Rendering dataset from [here](http://cvgl.stanford.edu/data2/ShapeNetRendering.tgz)
 
-Extract these into the directory ./data/ . Alternatively, extract them in the location of your choice but specify the respective directories with flag '--points_path' for ShapeNet points dataset and '--img_path' for ShapeNet renderings dataset when doing training and evaluaiton. 
-
+Extract these into the directory ./data/ . Alternatively, extract them in the location of your choice but specify the respective directories with flag '--points_path' for ShapeNet points dataset and '--img_path' for ShapeNet renderings dataset when doing training and evaluation.
+ 
 You should see the following directory structures:
 
 1. For ShapeNet points dataset
@@ -63,7 +63,7 @@ You should see the following directory structures:
 				
 ```
 
-2. For ShapeNet redering dataset
+2. For ShapeNet rendering dataset
 
 ```
 -- ./data/
@@ -85,7 +85,7 @@ In order to visualize the training procedure and get real time plots, etc we mak
 
 ## How to train your NMF 
 
-Once you have successfully launched your training environment/container, and acquired comet_ml workspace and API,  execute the following to first train the auto-encoder.. 
+Once you have successfully launched your training environment/container, and acquired comet_ml workspace and API,  execute the following to first train the auto-encoder.
 
 ```
 python train.py --train AE --points_path /path/to/points/dataset/ --comet_API xxxYOURxxxAPIxxx --comet_workspace xxxYOURxxxWORKSPACExxx 
@@ -110,7 +110,7 @@ If you wish to avoid comet_ml visualizations, simply omit --comet flags. This sh
 
 We provide predicted meshes for our pretrained NMF [here](). Addionally, the predictions for ablation (Fig 5 table) are provided [here](http://cseweb.ucsd.edu/~viscomp/projects/NeurIPS20NMF/generated_meshes/ablation.zip). 
 
-To enable further benchmarking, we provide predicted meshes for the baseline methods: [MeshRCNN](http://cseweb.ucsd.edu/~viscomp/projects/NeurIPS20NMF/generated_meshes/meshrcnn_data_new.zip)(76GB), [pixel2Mesh](http://cseweb.ucsd.edu/~viscomp/projects/NeurIPS20NMF/generated_meshes/pixel2mesh_data_new.zip)(79GB), [OccNet](http://cseweb.ucsd.edu/~viscomp/projects/NeurIPS20NMF/generated_meshes/occnet.zip)(3.2GB), [AtlasNet-Sph](http://cseweb.ucsd.edu/~viscomp/projects/NeurIPS20NMF/generated_meshes/new_atlasnet.zip) and [AtlasNet-25](http://cseweb.ucsd.edu/~viscomp/projects/NeurIPS20NMF/generated_meshes/new_atlasnet-25.zip). Please consider citing these works if you happen to use these mesh models along with our paper.
+To enable further benchmarking, we provide predicted meshes for the baseline methods: [MeshRCNN](http://cseweb.ucsd.edu/~viscomp/projects/NeurIPS20NMF/generated_meshes/meshrcnn_data_new.zip)(76GB), [pixel2Mesh](http://cseweb.ucsd.edu/~viscomp/projects/NeurIPS20NMF/generated_meshes/pixel2mesh_data_new.zip)(79GB), [OccNet](http://cseweb.ucsd.edu/~viscomp/projects/NeurIPS20NMF/generated_meshes/occnet.zip)(3.2GB), [AtlasNet-Sph](http://cseweb.ucsd.edu/~viscomp/projects/NeurIPS20NMF/generated_meshes/new_atlasnet.zip)(14GB) and [AtlasNet-25](http://cseweb.ucsd.edu/~viscomp/projects/NeurIPS20NMF/generated_meshes/new_atlasnet-25.zip)(12GB). Please consider citing these works if you happen to use these mesh models along with our paper. 
 
 In case you wish to generate meshes for your trained NMF, execute the following:
 
@@ -124,6 +124,27 @@ python3 generate.py --generate SVR --batch_size 10 --num_workers 13 --generate_s
 ```
 
 ## Evaluation
+
+First launch the evaluation container and do
+
+```
+cd torch-mesh-isect
+python setup.py install
+```
+
+Then modify the paths for predicted meshes in the config file located at ``` evaluation/config.py ```. Make sure that ```GDTH_PATH``` is set to the path where ShapeNet points dataset is stored. For evaluating other baselines, download their predicted meshes and extract them at ``` ./ ``` otherwise modify ``` xxx_PRED_PATH_IMAGES ``` and ```yyy_PRED_PATH_POINTS ``` to point where they are located.  
+
+To evaluate a method execute the following:
+
+```
+python evaluate.py --method nmf --type Points
+```
+
+Or try one of the other baselines:
+
+```
+python evaluate.py --method occnet-3 --type Images
+```
 
 ## NOTE: This repo is under construction. 
 Thanks for your interest, please check again in a few days or mail [me](mailto:k5gupta@ucsd.edu) your queries!
