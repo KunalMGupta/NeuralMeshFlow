@@ -15,7 +15,7 @@ This repository contains official Pytorch implementation of the paper:
 
 UC San Diego
 
-*Under Submission*
+*NeurIPS 2020  <span style="color:red">(Spotlight)</span>.*
 
 ## What is Neural Mesh Flow (NMF)?
 
