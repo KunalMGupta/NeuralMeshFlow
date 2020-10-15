@@ -49,6 +49,9 @@ mkdir data
 cd data
 wget http://cvgl.stanford.edu/data2/ShapeNetRendering.tgz
 wget http://cseweb.ucsd.edu/~viscomp/projects/NeurIPS20NMF/generated_meshes/ShapeNetPoints.zip
+
+tar zxvf ShapeNetRendering.tgz
+unzip ShapeNetPoints.zip
 ```
 
 You should see the following directory structures:
