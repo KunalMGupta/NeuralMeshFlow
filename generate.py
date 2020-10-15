@@ -36,11 +36,11 @@ def generate_svr(opt):
     with torch.no_grad():
         torch.cuda.set_device(0)
         testing_generator = get_dataloader('image', opt, split ='test')
-        model = nn.DataParallel(NeuralMeshFlow(encoder_type = 'image',PATH_svr=opt.PATH_svr, zdim=1000, time=0.2)).cuda()
-        load_partial_pretrained(model, opt.PATH_ae)
+        model = nn.DataParallel(NeuralMeshFlow(encoder_type = 'image',PATH_svr=opt.pretrained_svr_weights, zdim=1000, time=0.2)).cuda()
+        load_partial_pretrained(model, opt.pretrained_ae_weights)
         model.eval()
         
-        print(" **** Starting evaluation for Images ****")
+        print(" **** Generating shapes with image input ****")
         for input, _, cat, modelfile in tqdm(testing_generator):
             input = input.cuda()
             _,_, vertices, face = model(input)
@@ -55,11 +55,11 @@ def generate_ae(opt):
     with torch.no_grad():
 #         torch.cuda.set_device(0)
         testing_generator = get_dataloader('point', opt, split ='test')
-        model = nn.DataParallel(NeuralMeshFlow(encoder_type = 'point',PATH_svr=hopt.PATH_ae, zdim=1000, time=0.2)).cuda()
-        load_partial_pretrained(model, opt.PATH_ae)
+        model = nn.DataParallel(NeuralMeshFlow(encoder_type = 'point', zdim=1000, time=0.2)).cuda()
+        load_partial_pretrained(model, opt.pretrained_ae_weights)
         model.eval()
         
-        print(" **** Starting evaluation for Images ****")
+        print(" **** Generating shapes with point cloud input ****")
         for input, cat, modelfile in tqdm(testing_generator):
             input = input.cuda()
             _,_, vertices, face = model(input)
@@ -70,9 +70,10 @@ if __name__ == '__main__':
     from config import get_config
     
     experiment, opt = get_config()
-    if experiment.generate == 'AE': 
+    
+    if opt.generate == 'AE': 
         generate_ae(opt)   
-    elif experiment.generate == 'SVR': 
+    elif opt.generate == 'SVR': 
         generate_svr(opt)
     else:
         print("Invalid generate request")
