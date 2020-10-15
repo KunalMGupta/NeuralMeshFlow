@@ -21,7 +21,8 @@ def get_config():
     parser.add_argument("--model_folder_SVR", default = './train_models_svr/', type=str, help = "PATH to where the models are saved during training SVR")
     parser.add_argument("--generate_ae", default = './generate_nmf/points/', type=str, help = "PATH to where meshes for AE are stored")
     parser.add_argument("--generate_svr", default = './generate_nmf/svr/', type=str, help = "PATH to where meshes for SVR are stored")
-    
+    parser.add_argument("--pretrained_svr_weights", default = './train_models_svr/epoch_370', type=str, help = "PATH to pretrained SVR weights")
+    parser.add_argument("--pretrained_ae_weights", default = './train_models/epoch_149', type=str, help = "PATH to pretrained AE weights")
     parser.add_argument("--comet_API", default = None, type=str, help = "your API for comet_ml workspace")
     parser.add_argument("--comet_workspace", default = None, type=str, help = "your comet_ml workspace name")
     parser.add_argument("--comet_project_name", default = "NeuralMeshFlow", type=str, help = "Name of this project in comet_ml")
@@ -40,4 +41,3 @@ def get_config():
         
     return experiment, opt
     
-
