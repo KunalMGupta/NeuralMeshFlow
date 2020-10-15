@@ -96,7 +96,10 @@ class Dataset(data.Dataset):
         
         
     def __len__(self):
-        return len(self.models)
+        if self.split != 'train' and self.encoder_type=='image':
+            return 23*len(self.models)
+        else:
+            return len(self.models)
     
     def __get_imagenum__(self):
         '''
@@ -169,4 +172,5 @@ class Dataset(data.Dataset):
             X = torch.from_numpy(X[mask,...]).float() 
             
             return X, self.model2cat[modelfile], modelfile 
+
 
