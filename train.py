@@ -1,16 +1,3 @@
-import os
-import torch
-import torch.nn as nn
-from torch import optim
-from torch.optim.lr_scheduler import StepLR
-import numpy as np
-from pytorch3d.structures import Meshes
-from pytorch3d.ops import sample_points_from_meshes
-from pytorch3d.loss import chamfer_distance
-
-from dataset.dataset import get_dataloader
-from model.model import NeuralMeshFlow, PointsSVR
-
 def train_AE(experiment, opt):
     '''
     This function trains NMF Auto-encoding task
@@ -54,7 +41,6 @@ def train_AE(experiment, opt):
             This is made easily possible by Ravi et.al, Pytorch3D. 
             We compute vertex only Chamfer Distance for pred0
             Refer Section 3 (Loss function) in paper for more details.
-            
             '''
             
             # Differentiable meshes M_p1, M_p2 (See figure 4)
@@ -231,6 +217,19 @@ if __name__ == '__main__':
     from config import get_config
     
     experiment, opt = get_config()
+    
+    import os
+    import torch
+    import torch.nn as nn
+    from torch import optim
+    from torch.optim.lr_scheduler import StepLR
+    import numpy as np
+    from pytorch3d.structures import Meshes
+    from pytorch3d.ops import sample_points_from_meshes
+    from pytorch3d.loss import chamfer_distance
+
+    from dataset.dataset import get_dataloader
+    from model.model import NeuralMeshFlow, PointsSVR
     
     if opt.train == 'AE':
         train_AE(experiment, opt)
