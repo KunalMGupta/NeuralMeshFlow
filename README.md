@@ -117,6 +117,8 @@ python train --train SVR --points_path /path/to/points/dataset/ --img_path /path
 ```
 If you wish to avoid comet_ml visualizations, simply omit ```--comet``` flags. This should take roughly 24 hrs to train when using 1 NVIDIA 2080Ti GPU with 60GB ram and 20 CPU cores.
 
+*Note:* Look into ```config.py``` to find out other hyperparameters for running above experiemts like batch size and number of worker treads to run NMF of on your machine. 
+
 ## Generate meshes from trained NMF and baseline methods
 
 We provide predicted meshes for our pretrained NMF [here](http://cseweb.ucsd.edu/~viscomp/projects/NeurIPS20NMF/generated_meshes/nmf.zip). Addionally, the predictions for ablation (Fig 5 table) are provided [here](http://cseweb.ucsd.edu/~viscomp/projects/NeurIPS20NMF/generated_meshes/ablation.zip). 
