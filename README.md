@@ -42,11 +42,15 @@ If you prefer to use virtual environments and not dockers, please install packag
 
 Download the ShapeNet [rendering](http://cvgl.stanford.edu/data2/ShapeNetRendering.tgz) dataset and our pre-processed ShapeNet [points](http://cseweb.ucsd.edu/~viscomp/projects/NeurIPS20NMF/generated_meshes/ShapeNetPoints.zip)(73GB) dataset. 
 
+Extract these into the directory ```./data/``` . Alternatively, extract them in a location of your choice but specify the respective directories with flag ```--points_path``` for ShapeNet points dataset and ```--img_path``` for ShapeNet renderings dataset when doing training and evaluation.
+
 ```
 mkdir data
+cd data
+wget http://cvgl.stanford.edu/data2/ShapeNetRendering.tgz
+wget http://cseweb.ucsd.edu/~viscomp/projects/NeurIPS20NMF/generated_meshes/ShapeNetPoints.zip
 ```
-Extract these into the directory ```./data/``` . Alternatively, extract them in a location of your choice but specify the respective directories with flag ```--points_path``` for ShapeNet points dataset and ```--img_path``` for ShapeNet renderings dataset when doing training and evaluation.
- 
+
 You should see the following directory structures:
 
 1. For ShapeNet points dataset
