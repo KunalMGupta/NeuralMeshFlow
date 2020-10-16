@@ -35,16 +35,17 @@ def generate_svr(opt):
     
     with torch.no_grad():
         torch.cuda.set_device(0)
-        testing_generator = get_dataloader('image', opt, split ='test')
         model = nn.DataParallel(NeuralMeshFlow(encoder_type = 'image',PATH_svr=opt.pretrained_svr_weights, zdim=1000, time=0.2)).cuda()
         load_partial_pretrained(model, opt.pretrained_ae_weights)
         model.eval()
         
         print(" **** Generating shapes with image input ****")
-        for input, _, cat, modelfile in tqdm(testing_generator):
-            input = input.cuda()
-            _,_, vertices, face = model(input)
-            save(opt.generate_svr, cat, modelfile, vertices, face)
+        for j in range(23):
+            testing_generator = get_dataloader('image', opt, split ='test',img_num=j)
+            for input, _, cat, modelfile in tqdm(testing_generator):
+                input = input.cuda()
+                _,_, vertices, face = model(input)
+                save(opt.generate_svr, cat, modelfile, vertices, face)
             
 def generate_ae(opt):
     '''
