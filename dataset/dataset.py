@@ -7,7 +7,7 @@ import os
 import imageio
 import numpy as np
 
-def get_dataloader(type, opt, split = 'train', is_small=False):
+def get_dataloader(type, opt, split = 'train', is_small=False, img_num=0):
     '''
     Helper function let's you choose a dataloader
     type: Choose from 'point' or 'image' for shape completion or SVR tasks.
@@ -16,6 +16,7 @@ def get_dataloader(type, opt, split = 'train', is_small=False):
     points_path: PATH to the directory containing Shapenet points dataset
     img_path: PATH to the directory containing ShapeNet renderings from Choy et.al (3dr2n2)
     is_small: Set to True if wish to work with a small dataset of size 100. For demo/debug purpose
+    img_num: Choose an image number 00-23 during generation
     '''
     
     # Parameters
@@ -27,7 +28,7 @@ def get_dataloader(type, opt, split = 'train', is_small=False):
     if split == 'test' or split =='val':
         params['shuffle'] = False
         
-    training_set = Dataset(split, opt,  encoder_type = type, is_small=opt.is_small)
+    training_set = Dataset(split, opt,  encoder_type = type, is_small=opt.is_small, img_num=img_num)
     training_generator = data.DataLoader(training_set, **params)
 
     print("Dataloader for {}s with Batch Size : {} and {} workers created for {}ing.".format(type, params['batch_size'], params['num_workers'], split))
@@ -54,13 +55,14 @@ class Dataset(data.Dataset):
     Main dataset class used for testing/training. Can be used for both SVR and shape completion/AE tasks. 
     '''
     
-    def __init__(self, split_type, opt, encoder_type='points', is_small=False):
+    def __init__(self, split_type, opt, encoder_type='points', is_small=False, img_num=0):
         '''
         Initialization function.
         split_type: 'train', 'valid', 'test' used to specify the partion of dataset to be used
         opt: options for choosing dataloader
         encoder_type: 'points' or 'image' used to specify the type of input data to be used. Will fetch appropriate image data if 'image' is used.
         is_small: Set to True if wish to work with a small dataset of size 100. For demo/debug purpose
+        img_num: Choose an image number 00-23 during generation
         '''
         
         # Load the file containing model splits. Splits are made based on 3dr2n2 by Choy et.al. 
@@ -72,7 +74,7 @@ class Dataset(data.Dataset):
         self.dataset_dir_img = opt.img_path        # PATH to Image dataset
         self.models = []                              # Stores all models
         self.model2cat = {} # stores models with corresponding category
-        self.count = 0
+        self.img_num=img_num
         self.split = split_type
         
         mycats = list(split[split_type].keys()) # Categories to be used for training/testing (based on split)
@@ -96,10 +98,7 @@ class Dataset(data.Dataset):
         
         
     def __len__(self):
-        if self.split != 'train' and self.encoder_type=='image':
-            return 23*len(self.models)
-        else:
-            return len(self.models)
+        return len(self.models)
     
     def __get_imagenum__(self):
         '''
@@ -109,9 +108,7 @@ class Dataset(data.Dataset):
         '''
         if self.split == 'test':
             
-            imagenum = int(self.count/self.__len__())
-            self.count+=1
-
+            imagenum = self.img_num
         else:
             imagenum = np.random.randint(0,24)
             
