@@ -148,16 +148,17 @@ python setup.py install
 Then modify the path for predicted meshes in the config file located at ``` evaluation/config.py ```. Make sure that ```GDTH_PATH``` is set to the path where ShapeNet points dataset is stored. For evaluating other baselines, download their predicted meshes and extract them at ``` ./ ``` otherwise modify ``` xxx_PRED_PATH_IMAGES ``` and ```yyy_PRED_PATH_POINTS ``` to point where they are located.  
 
 To evaluate a method execute the following:
+*Note :* Decrease the num_workers to 1 if you have limited CPU and RAM. The following evaluation process take roughly 1hr with 1 2080Ti NVIDIA GPU, 32GB RAM and 20 CPU cores.  
 
 ```
 cd evaluation
-python evaluate.py --method nmf --type Points --batch_size 10 --num_workers 1
+python evaluate.py --method nmf --type Points --batch_size 10 --num_workers 13
 ```
 
 Or try one of the other baselines:
 
 ```
-python evaluate.py --method occnet-3 --type Images --batch_size 10 --num_workers 1
+python evaluate.py --method occnet-3 --type Images --batch_size 10 --num_workers 13
 ```
 
 ## NOTE: This repo is under construction. 
