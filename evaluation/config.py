@@ -5,8 +5,8 @@ def get_configs(METHOD, TYPE):
     METHOD: str; name of the method used
     TYPE: is it image or point cloud type data.
     '''
-    
-    assert METHOD in ['AtlasNet-25', 'AtlasNet', 'pixel2mesh', 'meshrcnn','occnet-1','occnet-2','occnet-3','ablation'], 'Please specify correct method for evaluation. Choose from one of these : AtlasNet-25, AtlasNet, pixel2mesh, meshrcnn, occnet-1, occnet-2, occnet-3, ablation'
+
+    assert METHOD in ['nmf', 'AtlasNet-25', 'AtlasNet', 'pixel2mesh', 'meshrcnn','occnet-1','occnet-2','occnet-3','ablation'], 'Please specify correct method for evaluation. Choose from one of these : nmf, AtlasNet-25, AtlasNet, pixel2mesh, meshrcnn, occnet-1, occnet-2, occnet-3, ablation'
     
     assert TYPE in ['Images', 'Points', 'ab-1e-2', 'ab-1e-3', 'ab-1e-4', 'no-norm', 'refine-0', 'refine-1'], 'Please specify correct datatype. Choose from one of these : Images, Points or from ablations ab-1e-2, ab-1e-3, ab-1e-4, no-norm, refine-0, refine-1'
     
@@ -15,10 +15,10 @@ def get_configs(METHOD, TYPE):
     '''
     
     # Ground Truth
-    GDTH_PATH = './data/ShapeNetPoints/'            # Path to ground truth points dataset (we evaluate against this)
+    GDTH_PATH = './../data/ShapeNetPoints/'            # Path to ground truth points dataset (we evaluate against this)
     # Note: for Pixel2Mesh and MeshRCNN, ground truth meshes are stored with respective predicted meshes
     
-    DIR = './'        # Directory where predicted meshes are stored
+    DIR = '..'        # Directory where predicted meshes are stored
     
     # AtlasNet-25
     AT25_PRED_PATH_IMAGES = '{}/new_atlasnet-25/svr/'.format(DIR)   # SVR meshes are stored here
@@ -112,3 +112,4 @@ def get_configs(METHOD, TYPE):
             return OCNN_PRED_PATH_POINTS, GDTH_PATH, OCNN_OUTFILE_POINTS, 0, TYPE
     
     return PRED_PATH, GDTH_PATH, OUTFILENAME, ROT, TYPE
+
