@@ -150,13 +150,14 @@ Then modify the path for predicted meshes in the config file located at ``` eval
 To evaluate a method execute the following:
 
 ```
-python evaluate.py --method nmf --type Points
+cd evaluation
+python evaluate.py --method nmf --type Points --batch_size 10 --num_workers 1
 ```
 
 Or try one of the other baselines:
 
 ```
-python evaluate.py --method occnet-3 --type Images
+python evaluate.py --method occnet-3 --type Images --batch_size 10 --num_workers 1
 ```
 
 ## NOTE: This repo is under construction. 
