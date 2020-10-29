@@ -160,6 +160,3 @@ Or try one of the other baselines:
 ```
 python evaluate.py --method occnet-3 --type Images --batch_size 10 --num_workers 13
 ```
-
-## NOTE: This repo is under construction. 
-Thanks for your interest, please check again in a few days or mail [me](mailto:k5gupta@ucsd.edu) your queries!
